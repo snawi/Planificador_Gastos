@@ -1,13 +1,21 @@
+import { useEffect } from "react"
 
 
-export const ControlPresupuesto = ({presupuesto}) => {
 
+export const ControlPresupuesto = ({presupuesto, gastos}) => {
+
+    useEffect(() => {
+       console.log('first')
+    },[])
+
+
+
+    //funcion
     const formatearPresupuesto = (cantidad) => {
         return cantidad.toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD'
         })
-    }
 
 
   return (
@@ -19,7 +27,6 @@ export const ControlPresupuesto = ({presupuesto}) => {
             <p>
             <span>presupuesto:  </span> { formatearPresupuesto(presupuesto) }
             </p>
-            
             <p>
             <span>Disponible:  </span> { formatearPresupuesto(0) }
             </p>
@@ -27,9 +34,6 @@ export const ControlPresupuesto = ({presupuesto}) => {
             <p>
             <span>Gastado:  </span> { formatearPresupuesto(0) }
             </p>
-           
-
-            
         </div>
     </div>
   )
