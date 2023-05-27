@@ -4,9 +4,7 @@ import { useEffect } from "react"
 
 export const ControlPresupuesto = ({presupuesto, gastos}) => {
 
-    useEffect(() => {
-       console.log('first')
-    },[])
+
 
 
 
@@ -16,6 +14,7 @@ export const ControlPresupuesto = ({presupuesto, gastos}) => {
             style: 'currency',
             currency: 'USD'
         })
+    }
 
 
   return (
@@ -38,3 +37,5 @@ export const ControlPresupuesto = ({presupuesto, gastos}) => {
     </div>
   )
 }
+
+

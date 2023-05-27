@@ -9,6 +9,7 @@ export const Header = ({
       gastos}) => {
 
 
+
   return (
    <header>
       <h1>Planificador de gastos </h1>

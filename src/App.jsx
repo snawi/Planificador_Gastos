@@ -41,10 +41,10 @@ function App() {
 
 
 
-  
+
   return (
     <div className={modal ? 'fijar' : ''}>
-      <Header 
+      <Header
       gastos = {gastos}
       presupuesto={presupuesto}
       setPresupuesto={setPresupuesto}
@@ -61,15 +61,14 @@ function App() {
         </main>
 
        <div className='nuevo-gasto'>
-       <img 
+       <img
         src={IconoNuevoGasto}
-        alt="IconoNuevoGasto" 
+        alt="IconoNuevoGasto"
         onClick={handleNuevoGasto}
         />
      </div>
      </>
     )}
-     
       {modal && <Modal
                  setModal={setModal}
                  animarModal={animarModal}

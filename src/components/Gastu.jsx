@@ -29,11 +29,10 @@ export const Gastu = ({gasto}) => {
     <div className="gasto sombra">
         <div className="contenido-gasto">
 
-        <img 
+        <img
         src={diccionarioIconos[categoria]}
         alt='icono-gasto'
          />
-        
 
 
 
@@ -43,8 +42,6 @@ export const Gastu = ({gasto}) => {
                 <p className="categoria">{categoria}</p>
                 <p className="nombre-gasto">{nombre}</p>
                 <p className='fecha-gasto'> Agregado el: {''} <span>{formatearFecha(fecha)}</span> </p>
-                    
-                
             </div>
         </div>
         <p className='cantidad-gasto'>$ {cantidad}</p>
