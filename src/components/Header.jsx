@@ -20,7 +20,7 @@ export const Header = ({
        presupuesto={presupuesto}
        gastos={gastos}
        />
-        
+
       ): (
 
         <NuevoPresupuesto
@@ -29,7 +29,6 @@ export const Header = ({
         setIsValidPresupuesto={setIsValidPresupuesto}/>
 
       )}
-      
       
    </header>
   )

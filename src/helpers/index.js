@@ -7,7 +7,7 @@ export const generarId = () => {
     return random + fecha
 }
 
-//funcion para la fech
+//funcion para la fecha
 
 export const formatearFecha = fecha => {
     const fechaNueva = new Date(fecha)

@@ -1,3 +1,12 @@
+import {
+  LeadingActions,
+  SwipeableList,
+  SwipeableListItem,
+  SwipeAction,
+  TrailingActions
+} from 'react-swipeable-list'
+import 'react-swipeable-list/dist/styles.css'
+
 import  { formatearFecha} from '../helpers'
 import IconoAhorro from '../img/icono_ahorro.svg'
 import IconoCasa from '../img/icono_casa.svg'
@@ -21,11 +30,32 @@ const diccionarioIconos = {
 
 
 
-export const Gastu = ({gasto}) => {
+export const Gastu = ({gasto, setGastoEditar}) => {
 
     const {categoria, nombre, cantidad, id, fecha} = gasto
 
+    const leadingActions = () => (
+      <LeadingActions>
+        <SwipeAction onClick={() => setGastoEditar(gasto)}>
+          editando
+        </SwipeAction>
+      </LeadingActions>
+    )
+
+    const trailingActions = () => (
+      <TrailingActions>
+        <SwipeAction onClick={() => console.log('eliminar')}>
+        eliminar
+        </SwipeAction>
+      </TrailingActions>
+    )
+
   return (
+    <SwipeableList>
+      <SwipeableListItem
+      leadingActions={leadingActions()}
+      trailingActions={trailingActions()}>
+
     <div className="gasto sombra">
         <div className="contenido-gasto">
 
@@ -33,11 +63,6 @@ export const Gastu = ({gasto}) => {
         src={diccionarioIconos[categoria]}
         alt='icono-gasto'
          />
-
-
-
-
-
             <div className="descripcion-gasto">
                 <p className="categoria">{categoria}</p>
                 <p className="nombre-gasto">{nombre}</p>
@@ -46,5 +71,7 @@ export const Gastu = ({gasto}) => {
         </div>
         <p className='cantidad-gasto'>$ {cantidad}</p>
     </div>
+     </SwipeableListItem>
+    </SwipeableList>
   )
 }
