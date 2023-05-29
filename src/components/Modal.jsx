@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Mensaje } from "./Mensaje"
 import cerrarBtn from '../img/cerrar.svg'
 
-export const Modal = ({setModal, animarModal, setAnimarModal,  guardarGasto, gastoEditar}) => {
+export const Modal = ({setModal, animarModal, setAnimarModal,  guardarGasto, gastoEditar, setGastoEditar}) => {
 
     const [mensaje, setMensaje] = useState('')
 
@@ -31,6 +31,7 @@ export const Modal = ({setModal, animarModal, setAnimarModal,  guardarGasto, gas
     const ocultarModal = () => {
         
         setAnimarModal(false)
+        setGastoEditar({})
 
         setTimeout(() => {
             setModal(false)

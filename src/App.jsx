@@ -9,7 +9,9 @@ import { object } from 'prop-types'
 
 function App() {
 
-  const [presupuesto, setPresupuesto] = useState(0)
+  const [presupuesto, setPresupuesto] = useState(
+      Number(localStorage.getItem('presupuesto'))  ?? 0
+    )
 
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false)
 
@@ -22,10 +24,6 @@ function App() {
   const [gastoEditar, setGastoEditar] = useState({})
 
  
-
-  
-
-
   useEffect(() => {
     if( Object.keys(gastoEditar).length > 0 ){
       setModal(true)
@@ -37,8 +35,21 @@ function App() {
     }
   },[gastoEditar])
 
+  //local storage
+  useEffect(() => {
+   localStorage.setItem('presupuesto', presupuesto ?? 0)
+  },[presupuesto])
+
+  useEffect(() => {
+    const presupuestoLS = Number(localStorage.getItem('presupuesto')) ?? 0
+
+    if(presupuestoLS > 0 ) {
+      setIsValidPresupuesto(true)
+    }
+  })
 
 
+//funcion
   const handleNuevoGasto = () => {
     setModal(true)
 
@@ -54,6 +65,7 @@ function App() {
       //Actualizar
       const gastosActualizados = gastos.map( gastoState => gastoState.id === gasto.id ? gasto : gastoState)
       setGastos(gastosActualizados)
+      setGastoEditar({})
 
     }else{
       gasto.fecha = Date.now()
@@ -69,6 +81,12 @@ function App() {
       setModal(false)
     }, 500);
 
+  }
+
+
+  const eliminarGasto = id => {
+    const gastosActualizados = gastos.filter(gasto => gasto.id !== id)
+    setGastos(gastosActualizados)
   }
 
 
@@ -90,6 +108,7 @@ function App() {
           <ListadoGastos
             gastos={gastos}
             setGastoEditar={setGastoEditar}
+            eliminarGasto={ eliminarGasto}
           />
         </main>
 
@@ -108,6 +127,7 @@ function App() {
                  setAnimarModal={setAnimarModal}
                  guardarGasto={ guardarGasto}
                  gastoEditar={gastoEditar}
+                 setGastoEditar={setGastoEditar}
                   /> }
 
     </div>
